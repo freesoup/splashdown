@@ -28,8 +28,10 @@ Template.sem_template.onRendered(function() {
             startSem = startSem.join("");
             currentMC = document.getElementById("tallyMC" + startSem).innerHTML;
             movingMC = ui.item[0].getElementsByClassName("credit")[0].innerHTML.match(/\d/g);
+            movingMC = movingMC.join('');
             newMC = currentMC - movingMC;
             document.getElementById("tallyMC" + startSem).innerHTML = newMC;
+            tallyColour("tallyMC" + startSem);
         },
 
         receive: function(event, ui) {
@@ -37,8 +39,10 @@ Template.sem_template.onRendered(function() {
             endSem = endSem.join("");
             currentMC = document.getElementById("tallyMC" + endSem).innerHTML;
             movingMC = ui.item[0].getElementsByClassName("credit")[0].innerHTML.match(/\d/g);
+            movingMC = movingMC.join('');
             newMC = parseInt(currentMC) + parseInt(movingMC);
             document.getElementById("tallyMC" + endSem).innerHTML = newMC;
+            tallyColour("tallyMC" + endSem);
             
             // helps to store the session when elements are dragged
             let id = $(ui.item).attr('id');
@@ -53,6 +57,8 @@ Template.sem_template.onRendered(function() {
     modCon.id = "semModContainer" + numSem;
     let tally=document.getElementById("tallyMC");
     tally.id = "tallyMC"+numSem;
+    let semType = document.getElementById("semester-type-list");
+    semType.id = "semester-type-list" + numSem;
     let modContext = document.getElementById("add-mod-menu");
     let contextString = "add-mod-menu-" + numSem;
     modContext.id = contextString;
@@ -65,6 +71,17 @@ Template.sem_template.onRendered(function() {
     }
     numSem++;
 });
+
+function tallyColour(semID){
+    let mcTally = document.getElementById(semID);
+    if (mcTally.innerHTML > 25) {
+        mcTally.classList.remove("classtally");
+        mcTally.classList.add("overloadtally");
+    } else {
+        mcTally.classList.add("classtally");
+        mcTally.classList.remove("overloadtally");
+    }
+}
 
 
 

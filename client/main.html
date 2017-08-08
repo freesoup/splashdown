@@ -76,6 +76,7 @@
         <form class="form-wrapper">
             <input list="mod-list" id="searchbar" type="text" name="module" placeholder="Search for module..." required>
             <button class="search-mod" type="submit">Add</button>
+            <span class="close">&times;</span>
             <datalist id="mod-list">
             </datalist>
         </form>
@@ -83,15 +84,47 @@
 </template>
 
 <template name="helpbox">
-    <div class="hidden" id="helpbox">
+        <div class="hidden" id="helpbox">
         <div class="instructions">
-            <div class = "guide">
-                <div class="step">Right click and choose the add module option</div>
-                <div class="step">Drag and drop the modules to arrange to your liking</div>
-                <div class="step">Delete the modules by double clicking the module</div>
-                <div class="step">Add more semesters by clicking the add semester button</div>
+            <div class="tutorial-container">
+
+                <div class="png fade">
+                    <div class="toplefttext">Step 1</div>
+                    <img src="Step1.png" class = "picture">
+                    <div class="bottomdesc">Right click and choose the add module option</div>
+                </div>
+
+                <div class="png fade">
+                    <div class="toplefttext">Step 2</div>
+                    <img src="Step2.png" class = "picture">
+                    <div class="bottomdesc">Drag and drop the modules to arrange to your liking</div>
+                </div>
+
+                <div class="png fade">
+                    <div class="toplefttext">Step 3</div>
+                    <img src="Step3.png" class = "picture">
+                    <div class="bottomdesc">Delete the modules by double clicking the module</div>
+                </div>
+
+                <div class="png fade">
+                    <div class="toplefttext">Step 4</div>
+                    <img src="Step4.png" class = "picture">
+                    <div class="bottomdesc">Add more semesters by clicking the add semester button</div>
+                </div>
+
+                <a class="prev">&#10094;</a>
+                <a class="next">&#10095;</a>
             </div>
-            <button class="helpClose" type="button">Close</button>
+            <br>
+
+            <div class="controldots">
+                <span class="dot" id="dot1">1</span> 
+                <span class="dot" id="dot2">2</span> 
+                <span class="dot" id="dot3">3</span> 
+                <span class="dot" id="dot4">4</span> 
+                <span class="helpclose">&times;</span>
+            </div>
+            
         </div>
     </div>
 </template>

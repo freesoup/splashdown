@@ -27,7 +27,7 @@ function createSeshModule(i, semNum) {
     newMod.getElementsByClassName("code")[0].innerHTML = ModuleInformation.data[i].ModuleCode;
     newMod.getElementsByClassName("title")[0].innerHTML = ModuleInformation.data[i].ModuleTitle;
     newMod.getElementsByClassName("description")[0].innerHTML = ModuleInformation.data[i].ModuleDescription;
-    newMod.getElementsByClassName("credit")[0].innerHTML = "Modular Credits : " + ModuleInformation.data[i].ModuleCredit +"MC";
+    newMod.getElementsByClassName("credit")[0].innerHTML = "Modular Credits : " + ModuleInformation.data[i].ModuleCredit;
     newMod.getElementsByClassName("workload")[0].innerHTML = "Workload : " + ModuleInformation.data[i].Workload;
     if(ModuleInformation.data[i].Prerequisite==undefined) {
         newMod.getElementsByClassName("prereq")[0].style.display ='none';
@@ -42,9 +42,30 @@ function createSeshModule(i, semNum) {
         newMod.getElementsByClassName("preclu")[0].innerHTML =ModuleInformation.data[i].Preclusion;
     }
 
+    for (let p = 0; p < ModuleInformation.data[i].History.length; p++) {
+        if (ModuleInformation.data[i].History[p].Semester == 1) {
+            newMod.getElementsByClassName("sem1")[0].style.display = 'inline-block';
+            newMod.getElementsByClassName("sem1")[0].setAttribute("data-value", "true");
+        }
+        if (ModuleInformation.data[i].History[p].Semester == 2) {
+            newMod.getElementsByClassName("sem2")[0].style.display = 'inline-block';
+            newMod.getElementsByClassName("sem2")[0].setAttribute("data-value", "true");
+        }
+        if (ModuleInformation.data[i].History[p].Semester == 3) {
+            newMod.getElementsByClassName("sem3")[0].style.display = 'inline-block';
+            newMod.getElementsByClassName("sem3")[0].setAttribute("data-value", "true");
+        }
+        if (ModuleInformation.data[i].History[p].Semester == 4) {
+            newMod.getElementsByClassName("sem4")[0].style.display = 'inline-block';
+            newMod.getElementsByClassName("sem4")[0].setAttribute("data-value", "true");
+        }
+
+    }
+
     value = parseInt(document.getElementById("tallyMC" + semNum).innerHTML);
     value += parseInt(ModuleInformation.data[i].ModuleCredit);
     document.getElementById("tallyMC" + semNum).innerHTML = value;
+    tallyColour("tallyMC" + semNum);
 }
 
 Template.platform.events({
@@ -115,6 +136,7 @@ Template.sem_template.events({
         value = document.getElementById("tallyMC" + semNum).innerHTML;
         newMC=value-targetMC;
         document.getElementById("tallyMC" + semNum).innerHTML = newMC;
+        tallyColour("tallyMC" + semNum);
         delete modHash[target.id];
         target.remove();
         showDelete = true;
@@ -161,7 +183,7 @@ Template.lightbox.events({
                         newMod.getElementsByClassName("code")[0].innerHTML = ModuleInformation.data[i].ModuleCode;
                         newMod.getElementsByClassName("title")[0].innerHTML = ModuleInformation.data[i].ModuleTitle;
                         newMod.getElementsByClassName("description")[0].innerHTML = ModuleInformation.data[i].ModuleDescription;
-                        newMod.getElementsByClassName("credit")[0].innerHTML = "Modular Credits : " + ModuleInformation.data[i].ModuleCredit +"MC";
+                        newMod.getElementsByClassName("credit")[0].innerHTML = "Modular Credits : " + ModuleInformation.data[i].ModuleCredit;
                         newMod.getElementsByClassName("workload")[0].innerHTML = "Workload : " + ModuleInformation.data[i].Workload;
                         if(ModuleInformation.data[i].Prerequisite==undefined) {
                             newMod.getElementsByClassName("prereq")[0].style.display ='none';
@@ -199,6 +221,8 @@ Template.lightbox.events({
                         value = parseInt(document.getElementById("tallyMC" + semNum).innerHTML);
                         value += parseInt(ModuleInformation.data[i].ModuleCredit);
                         document.getElementById("tallyMC" + semNum).innerHTML = value;
+                        tallyColour("tallyMC" + semNum);
+
 
                         localStorage.setItem(ModuleInformation.data[i].ModuleCode, semNum);
                         localStorage.setItem(ModuleInformation.data[i].ModuleCode + "Index", i);
@@ -215,6 +239,11 @@ Template.lightbox.events({
         let lightbox = document.getElementById('lightbox');
         lightbox.classList.add('hidden');
     },
+
+    'click .close'(event) {
+         let lightbox = document.getElementById('lightbox');
+         lightbox.classList.add('hidden');
+     }
 });
 
 $('.context').contextmenu();
@@ -226,9 +255,85 @@ Template.body.events({
 
     },
 
-    'click .helpClose'(event) {
+    'click .helpclose'(event) {
         let helpbox = document.getElementById("helpbox");
         helpbox.classList.add("hidden");
     },
 
 });
+
+
+function tallyColour(semID){
+    let mcTally = document.getElementById(semID);
+    if (mcTally.innerHTML > 25) {
+        mcTally.classList.remove("classtally");
+        mcTally.classList.add("overloadtally");
+    } else {
+        mcTally.classList.add("classtally");
+        mcTally.classList.remove("overloadtally");
+    };
+
+}
+
+var step;
+Template.helpbox.onRendered(function() {
+    step=1;
+    showStep(step);
+});
+
+Template.helpbox.events({
+    'click .dot'(event) {
+        let dot = event.target.id;
+        currentStep(parseInt(dot.match(/\d/g)));
+    },
+
+    'click .prev'(event) {
+        addStep(-1);
+    },
+
+    'click .next'(event) {
+        addStep(1);
+    }
+});
+
+function addStep (n) {
+    step+=n;
+    showStep(step);
+}
+
+function currentStep(n) {
+    step=n;
+    showStep(step);
+}
+
+function showStep(n) {
+
+    var steps = document.getElementsByClassName("png");
+    var dots = document.getElementsByClassName("dot");
+    var next=document.getElementsByClassName("next");
+
+    if (n==4) {
+        next[0].innerHTML="Close";
+    } else {
+        next[0].innerHTML="&#10095;"
+    }
+    
+    if (n > steps.length) {
+        let helpbox = document.getElementById("helpbox");
+        helpbox.classList.add("hidden");
+        step=1;
+    }
+
+    if (n < 1) {step = steps.length}
+    
+    for (let i = 0; i < steps.length; i++) {
+          steps[i].style.display = "none"; 
+    }
+    
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+
+    steps[step-1].style.display = "block"; 
+    dots[step-1].classList.add("active");
+}

@@ -4,16 +4,18 @@
         <section class="left-meta">
             <h2 class="semester-number" id="num">{{getNumSem}}</h2>
             <form class="sem-form">
-                <input placeholder="sem type" type="text" class="sem-type" size="6" list="semester-type-list" onclick="this.value == ''"/>
-                <datalist id="semester-type-list">
-                    <option value="Sem 1"></option>
-                    <option value="Sem 2"></option>
-                    <option value="ST1"></option>
-                    <option value="ST2"></option>
-                </datalist>
+                <select id="semester-type-list" class="sem-type">
+                    <option value="placeholder" disabled selected hidden>Semester</option>
+                    <option value="sem1">Sem 1</option>
+                    <option value="sem2">Sem 2</option>
+                    <option value="sem3">ST 1</option>
+                    <option value="sem4">ST 2</option>
+                </select>
             </form>
-            <div class="titletally">Modular Credits</div>
-            <div class="classtally" id="tallyMC">0</div>
+            <div class="tally-wrapper">
+                <div class="titletally">Modular Credits</div>
+                <div class="classtally" id="tallyMC">0</div>
+            </div>
         </section>
         <ul class="module-container context" id="modCon" data-toggle="context" data-target="">
         </ul>
