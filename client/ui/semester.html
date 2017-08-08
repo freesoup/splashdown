@@ -1,0 +1,53 @@
+<!-- semester template -->
+<template name="sem_template">
+    <article class="semester">
+        <section class="left-meta">
+            <h2 class="semester-number" id="num">{{getNumSem}}</h2>
+            <form class="sem-form">
+                <input placeholder="sem type" type="text" class="sem-type" size="6" list="semester-type-list" onclick="this.value == ''"/>
+                <datalist id="semester-type-list">
+                    <option value="Sem 1"></option>
+                    <option value="Sem 2"></option>
+                    <option value="ST1"></option>
+                    <option value="ST2"></option>
+                </datalist>
+            </form>
+            <div class="titletally">Modular Credits</div>
+            <div class="classtally" id="tallyMC">0</div>
+        </section>
+        <ul class="module-container context" id="modCon" data-toggle="context" data-target="">
+        </ul>
+        
+        <div id="add-mod-menu">
+            <ul class="dropdown-menu" role="menu">
+                <li class="addSem"><a tabindex="-1" href="#" id="add-mod-context-tab"></a></li>
+            </ul>
+        </div>
+    </article>
+</template>
+
+<!-- module template -->
+<template name="module">
+    <li class="module tooltip" id="newModule">
+        <span class="tooltiptext">{{> moduleInfo}}</span>  
+    </li>
+</template>
+
+<template name="moduleInfo">
+    <div class="code"></div>
+    <div class="title"></div>
+    <div class="semesters sem1" data-value="false"> Semester 1 </div>
+    <div class="semesters sem2" data-value="false"> Semester 2 </div>
+    <div class="semesters sem3" data-value="false"> Special Term 1 </div>
+    <div class="semesters sem4" data-value="false"> Special Term 2 </div>
+    <br>
+    <br>
+    <div class="description"></div>
+    <div class="reqtitle">Prerequisite(s)</div>
+    <div class="prereq"></div>
+    <div class="clutitle">Preclusion(s)</div>
+    <div class="preclu"></div>
+    <br>
+    <div class="credit"></div>
+    <div class="workload"></div>
+</template>

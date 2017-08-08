@@ -1,0 +1,286 @@
+body, html {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* css for header */
+
+.gradient-gray-leftToRight {
+  background: #1b1818; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#1b1818, black); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#1b1818, black); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#1b1818, black); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#1b1818, black); /* Standard syntax */
+  color: white;
+}
+
+#logo {
+  height: 2.5em;
+  margin: 0.5em 0em 0.5em 0em;
+}
+
+header {
+  border: none;
+  border-bottom-width: 100px;
+  display: block;
+  clear: both;
+}
+
+nav {
+  padding: 0em;
+  border: 0em;
+  margin: 0em;
+}
+
+.main-nav-bar {
+  font-family: 'Gill Sans', Verdana, Lucida, Geneva, Helvetica, Arial, sans-serif;
+  display: block;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  text-decoration: none;
+  list-style: none;
+  margin: 0.2em;
+  clear: right;
+  top: 0em;
+  padding-left: 0px;
+  width: 100%;
+  border-bottom: ridge 0.025em #FF7800;
+}
+
+.main-nav-bar li {
+  text-decoration: none;
+  display: inline-block;
+  float: left;
+  color: #aaaaaa;
+  font-size: 1em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.main-nav-bar li a {
+  padding: 1em 1em 1em 1em;
+  text-decoration: none;
+  width: 100%;
+}
+
+html>body .main-nav-bar li a {
+  width: auto;
+}
+
+.main-nav-bar li a:visited {
+  color: inherit;
+}
+
+.main-nav-bar li a:hover {
+  color: #FF7800;
+}
+
+.main-nav-bar li a:active {
+  color: white;
+}
+
+.nav-link {
+  margin: 1em 1.25em 1em 1.25em;
+}
+
+
+
+
+
+
+
+/* css for platform */
+main {
+  height: 93%;
+  width: 100%;
+  position: relative;
+  display: block;
+  top: 4em;
+  overflow:scroll;
+}
+
+.platform {
+  width: 67.5%;
+  display: inline-block;
+  float: left;
+  height: 100;
+  height: auto;
+  height: 100%;
+  position: relative;
+  overflow:visible
+}
+
+.control-panel {
+  width: 32.3%;
+  float: right;
+  left: 67%;
+  border-left: ridge 0.05em #FF7800;
+  height: 100%;
+  position:fixed;
+  z-index:1;
+}
+
+.hidden {
+  display: none;
+}
+
+#semester-container {
+  padding: 0em 1em 0em 1em;
+  height: 93%;
+  overflow-x:visible;
+}
+
+#add-semester {
+    min-height: 25%;
+    border-bottom: white dashed 1px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+    
+    
+    
+  background: transparent;
+}
+
+/* css for semester styling */
+h1 {
+  display: none;
+}
+
+#add-semester-logo {
+    height: 5em;
+    opacity: 0.5;
+    display: block;
+    margin: 3em auto;
+    cursor: pointer;
+}
+
+
+#add-semester:hover > #add-semester-logo {
+    opacity: 1;
+    height: 6em;
+}
+
+/* css for control panel */
+
+
+
+
+/* lightbox css */
+
+#lightbox {
+    position: fixed;
+    display: hide;
+    z-index: 2;
+    opacity: 0.80;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+}
+
+.form-wrapper {
+    width: 450px;
+    opacity: 1;
+    z-index: 3;
+    padding: 15px;
+    display: flex;
+    margin: 150px auto 50px auto;
+    height: auto;
+    background: #aaa;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+}
+
+.form-wrapper input {
+    border: 0;
+    opacity: 3;
+    border-radius: 7px;
+    padding: 0 17px;
+    padding-right: 5px;
+    display: inline-block;
+    float: left;
+    width: 320px;
+    /*border-bottom: 5px solid #bdc3c7;*/
+    height: 50px;
+    font-family: 'Roboto', sans-serif;
+    color: #666666;
+    font-size: 20px;
+}
+
+.search-mod {
+    text-decoration: none;
+    border: none;
+    height: 50px;
+    width: 20%;
+    padding-left: auto;
+    margin-left: auto;
+    float: right;
+    padding-left: 5px;
+    font-family: 'Roboto', sans-serif;
+    background-color:  #FF7800;
+    border-radius: 10px;
+    font-size: 18px;
+    color: beige;
+    margin-left: 20px;
+}
+
+.search-mod:hover {
+    cursor: pointer;
+}
+
+a:visited {
+    color: #aaaaaa;
+}
+
+#helpbox {
+    position: fixed;
+    display: hide;
+    z-index: 2;
+    opacity: 0.8;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+}
+
+.instructions {
+    font-family: 'Gill Sans', Verdana, Lucida, Geneva, Helvetica, Arial, sans-serif;
+    color: black;
+    width: 450px;
+    opacity: 1;
+    z-index: 3;
+    padding: 15px;
+    display: block;
+    margin: auto;
+    height: auto;
+    background-color:white;
+    border-color: #aaa;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+}
+
+.step {
+  margin:auto;
+}

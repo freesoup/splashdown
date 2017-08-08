@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+
+/* semester styling */
+.sem-type {
+  font-family: Verdana, fantasy, sans-serif;
+  font-size: 1em;
+}
+
+.semester-container {
+  padding: 1em 0.5em 0.5em 1em;
+  height: 93%;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.semester {
+    display: flex;
+    height:auto;
+    border-bottom: white dashed 1px;
+    overflow: visible;
+}
+
+.left-meta {
+    display: inline-block;
+    width: 25%;
+    height: 80%;
+    float: left;
+    margin: 1em 1em 1em 1em;
+}
+
+.sem-form {
+    text-align: center;
+    margin: auto;
+}
+
+.semester-number {
+    color: white;
+    font-family: Impact;
+    display: block;
+    clear: both;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.sem-type {
+  font-family: Verdana, fantasy, sans-serif;
+  font-size: 1em;
+}
+
+p {
+    margin: 0;
+    vertical-align: middle;
+    margin: auto;
+    font-size: 1em;
+    font-family: Verdana;
+    border: 0.5px white double;
+}
+
+
+/* module styling */
+
+.module {
+    padding: auto;
+    display: inline-block;
+    min-height: 1em;
+    min-width: 2em;
+    text-align: center;
+    vertical-align: center;
+    padding: 1em 1.5em 1em 1.5em;
+    border-radius: 0.5em; 
+    border: white 1px double;
+    margin: 1em 1em 1em 1em;
+    cursor: pointer;
+    position: relative;
+    overflow: visible;
+}
+
+
+.module-container {
+    width: 70%;
+    min-height: 100px;
+    display: inline-block;
+    float: right;
+    overflow: visible;
+    padding: 0px;
+}
+
+.module:hover {
+    border-color: #FF7800;
+    color: #FF7800;
+    border-width: medium;        
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #fff0f0;
+    width: 450px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    padding: 5px 5px;
+    border-radius: 6px;
+    overflow:visible;
+    cursor: auto;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 3;
+    /* Transition animation */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 10%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #fff0f0 transparent;
+}
+
+.code {
+    font-size: 24px;
+    color: tomato;
+}
+
+.description {
+    font-size: 12px;
+}
+
+.workload {
+
+    font-size: 14px;
+
+}
+
+.credit {
+    font-size: 14px;
+}
+
+.reqtitle {
+    font-size: 18px;
+    color: tomato;
+    padding-top: 15px;
+}
+
+.prereq {
+    font-size: 12px;
+}
+
+.clutitle {
+    font-size: 18px;
+    color: tomato;
+    padding-top: 15px;
+}
+
+.preclu {
+    font-size: 12px;
+}
+
+.titletally {
+    display:inline-block;
+    font-family: Rubik, sans-serif;
+    font-size: 18px;
+    padding: 4px 4px;
+    margin: 4px 4px;
+}
+
+.classtally {
+    display: inline-block;
+    font-family: Rubik, sans-serif;
+    font-size: 20px;
+    border-style: solid;
+    border: 1px 1px;
+    border-color: tomato;
+    border-radius: 2px;
+    padding: 3px;
+    margin: 15px 3px 3px 3px;
+    background: tomato;
+
+}
+
+.semesters {
+    display: none;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: tomato;
+    background-color: tomato;
+    font-size: 14px;
+    color: white;
+}
+

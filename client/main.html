@@ -1,0 +1,101 @@
+<!-- contains meta information about the webpage -->
+<head>
+  <title>NUSVision</title>
+  <meta charset="utf-8">
+  <meta name="description" content="This website is designed to provide an easy way for NUS Students to create and visualize a module plan for the entirety of their undergraduate years">
+  <meta name="language" content="English">
+  <meta name="web_author" content="Kappa Bears Orbital 2017">
+  <title>NUSVision</title>
+</head>
+
+<body class="gradient-gray-leftToRight">
+    <!-- backward compatibility for name of webpage -->
+    <h1 class="hidden">NUSVision</h1>
+    <header class="header">
+        <nav>
+            <!-- main navigation bar -->
+            <ul class="main-nav-bar">
+                <li><a href=""><img id="logo" src="NUSVision_Logo.svg" alt="NUSVision Logo"/></a></li>
+                <li class="nav-link"><a href="#">Home</a></li>
+                <li class="nav-link"><a href="#">Blog</a></li>
+                <li class="nav-link"><a href="#">Planner</a></li>
+                <li class="nav-link helping"><a href="#">Help</a></li>
+            </ul>
+        </nav>
+    </header>
+    {{> helpbox}}
+
+    <main class="main-content">
+        <!-- contains the planner platform -->
+        {{> platform}}
+
+        <!-- sidebar is meant for control panel -->
+        <aside class="control-panel">
+        </aside>
+    </main>
+</body>
+
+
+
+<!-- ignore templates below - they are default from meteor -->
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="info">
+  <h2>Learn Meteor!</h2>
+  <ul>
+    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
+    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
+    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
+    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
+  </ul>
+</template>
+
+<template name="platform">
+    <section class="platform">
+        <!-- container for the semesters -->
+        <div id="semester-container">  
+            {{> sem_template }}
+            {{> sem_template }}
+            {{> sem_template }}
+            {{> sem_template }}
+            {{> sem_template }}
+            <!-- add new semesters by clicking on this div -->
+            <div id="add-semester">
+                <img id="add-semester-logo" src="add-semester.svg" alt="add semester">
+            </div>
+            {{> lightbox}}
+        </div>
+    </section>
+</template>
+
+<template name="lightbox">
+    <div class="hidden" id="lightbox">
+        <form class="form-wrapper">
+            <input list="mod-list" id="searchbar" type="text" name="module" placeholder="Search for module..." required>
+            <button class="search-mod" type="submit">Add</button>
+            <datalist id="mod-list">
+            </datalist>
+        </form>
+    </div>
+</template>
+
+<template name="helpbox">
+    <div class="hidden" id="helpbox">
+        <div class="instructions">
+            <div class = "guide">
+                <div class="step">Right click and choose the add module option</div>
+                <div class="step">Drag and drop the modules to arrange to your liking</div>
+                <div class="step">Delete the modules by double clicking the module</div>
+                <div class="step">Add more semesters by clicking the add semester button</div>
+            </div>
+            <button class="helpClose" type="button">Close</button>
+        </div>
+    </div>
+</template>
+
+<template name="modOption">
+    <option value="" id="mod-dud"></option>
+</template>
