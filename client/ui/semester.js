@@ -43,6 +43,8 @@ Template.sem_template.onRendered(function() {
             newMC = parseInt(currentMC) + parseInt(movingMC);
             document.getElementById("tallyMC" + endSem).innerHTML = newMC;
             tallyColour("tallyMC" + endSem);
+            checkError(ui.item[0], "semester-type-list" + endSem);
+
             
             // helps to store the session when elements are dragged
             let id = $(ui.item).attr('id');
@@ -88,5 +90,17 @@ function tallyColour(semID){
     }
 }
 
+function checkError(module, listID) {
+    var semTypeList = document.getElementById(listID);
+    var semType = semTypeList.options[semTypeList.selectedIndex].value;
+
+    if (module.getElementsByClassName(semType)[0].getAttribute("data-value") == "false") {
+        module.classList.remove("okMod");
+        module.classList.add("errorMod");
+    } else {
+        module.classList.add("okMod");
+        module.classList.remove("errorMod");
+    }
+}
 
 

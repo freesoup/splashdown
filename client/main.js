@@ -66,6 +66,8 @@ function createSeshModule(i, semNum) {
     value += parseInt(ModuleInformation.data[i].ModuleCredit);
     document.getElementById("tallyMC" + semNum).innerHTML = value;
     tallyColour("tallyMC" + semNum);
+    checkError(newMod, "semester-type-list" + semNum);
+
 }
 
 Template.platform.events({
@@ -154,7 +156,9 @@ Template.sem_template.events({
     },
     'change .sem-type'(event) {
         let target = event.target;
-        alert(target.value);
+        let semNumber=target.id.match(/\d/g);
+        semNumber=semNumber.join("");
+        checkWholeSem(semNumber);
         localStorage.setItem(target.id, target.value);
     },
 });
@@ -228,6 +232,7 @@ Template.lightbox.events({
                         value += parseInt(ModuleInformation.data[i].ModuleCredit);
                         document.getElementById("tallyMC" + semNum).innerHTML = value;
                         tallyColour("tallyMC" + semNum);
+                        checkError(newMod, "semester-type-list" + semNum);
 
 
                         localStorage.setItem(ModuleInformation.data[i].ModuleCode, semNum);
@@ -316,7 +321,7 @@ function showStep(n) {
 
     var steps = document.getElementsByClassName("png");
     var dots = document.getElementsByClassName("dot");
-    var next=document.getElementsByClassName("next");
+    var next = document.getElementsByClassName("next");
 
     if (n==4) {
         next[0].innerHTML="Close";
@@ -342,4 +347,36 @@ function showStep(n) {
 
     steps[step-1].style.display = "block"; 
     dots[step-1].classList.add("active");
+}
+
+function checkError(module, listID) {
+    var semTypeList = document.getElementById(listID);
+    var semType = semTypeList.options[semTypeList.selectedIndex].value;
+
+    if (module.getElementsByClassName(semType)[0].getAttribute("data-value") == "false") {
+        module.classList.add('errorMod');
+    } else {
+        module.classList.add('okMod');
+    }
+}
+
+function checkError2(module, listID) {
+    var semTypeList = document.getElementById(listID);
+    var semType = semTypeList.options[semTypeList.selectedIndex].value;
+
+    if (module.getElementsByClassName(semType)[0].getAttribute("data-value") == "false") {
+        module.classList.remove("okMod");
+        module.classList.add("errorMod");
+    } else {
+        module.classList.add("okMod");
+        module.classList.remove("errorMod");
+    }
+}
+
+function checkWholeSem(semNumber) {
+    var semContainer = document.getElementById("semModContainer" + semNumber);
+    for (let i = 0; i< semContainer.getElementsByClassName("module").length; i++) {
+        checkError2(semContainer.getElementsByClassName("module")[i], "semester-type-list" + semNumber);
+    }
+
 }
