@@ -72,6 +72,7 @@ Template.platform.events({
    'click #add-semester-logo'(event) {
         createSem();
    },
+
 });
 
 Template.platform.onRendered(function() {
@@ -150,7 +151,12 @@ Template.sem_template.events({
         }
         localStorage.setItem("modList", result);
         localStorage.removeItem(target.id);
-    }
+    },
+    'change .sem-type'(event) {
+        let target = event.target;
+        alert(target.value);
+        localStorage.setItem(target.id, target.value);
+    },
 });
 
 var modHash = {};

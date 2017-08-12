@@ -70,6 +70,11 @@ Template.sem_template.onRendered(function() {
         localStorage.setItem('numberSemesters', numSem);
     }
     numSem++;
+
+    // restore session for sem-type
+    if(localStorage.getItem(semType.id) != null) {
+        semType.value = localStorage.getItem(semType.id);
+    }
 });
 
 function tallyColour(semID){
