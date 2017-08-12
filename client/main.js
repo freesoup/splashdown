@@ -26,7 +26,11 @@ function createSeshModule(i, semNum) {
     modHash[ModuleInformation.data[i].ModuleCode] = semNum;
     newMod.getElementsByClassName("code")[0].innerHTML = ModuleInformation.data[i].ModuleCode;
     newMod.getElementsByClassName("title")[0].innerHTML = ModuleInformation.data[i].ModuleTitle;
-    newMod.getElementsByClassName("description")[0].innerHTML = ModuleInformation.data[i].ModuleDescription;
+    if (ModuleInformation.data[i].ModuleDescription==undefined){
+        newMod.getElementsByClassName("description")[0].innerHTML="This module does not have a description"
+    } else {
+        newMod.getElementsByClassName("description")[0].innerHTML = ModuleInformation.data[i].ModuleDescription;
+    }
     newMod.getElementsByClassName("credit")[0].innerHTML = "Modular Credits : " + ModuleInformation.data[i].ModuleCredit;
     newMod.getElementsByClassName("workload")[0].innerHTML = "Workload : " + ModuleInformation.data[i].Workload;
     if(ModuleInformation.data[i].Prerequisite==undefined) {
@@ -192,7 +196,11 @@ Template.lightbox.events({
                     if (ModuleInformation.data[i].ModuleCode==newMod.id) {
                         newMod.getElementsByClassName("code")[0].innerHTML = ModuleInformation.data[i].ModuleCode;
                         newMod.getElementsByClassName("title")[0].innerHTML = ModuleInformation.data[i].ModuleTitle;
-                        newMod.getElementsByClassName("description")[0].innerHTML = ModuleInformation.data[i].ModuleDescription;
+                        if (ModuleInformation.data[i].ModuleDescription==undefined){
+                            newMod.getElementsByClassName("description")[0].innerHTML="This module does not have a description"
+                        } else {
+                            newMod.getElementsByClassName("description")[0].innerHTML = ModuleInformation.data[i].ModuleDescription;
+                        }
                         newMod.getElementsByClassName("credit")[0].innerHTML = "Modular Credits : " + ModuleInformation.data[i].ModuleCredit;
                         newMod.getElementsByClassName("workload")[0].innerHTML = "Workload : " + ModuleInformation.data[i].Workload;
                         if(ModuleInformation.data[i].Prerequisite==undefined) {
@@ -286,16 +294,17 @@ function tallyColour(semID){
 
 }
 
+//Tutorial Part//
 var step;
 Template.helpbox.onRendered(function() {
-    step=1;
+    step=0; //stepIndex 0 is step 1
     showStep(step);
 });
 
 Template.helpbox.events({
     'click .dot'(event) {
         let dot = event.target.id;
-        currentStep(parseInt(dot.match(/\d/g)));
+        currentStep(parseInt(dot.match(/\d/g))-1);
     },
 
     'click .prev'(event) {
@@ -309,44 +318,45 @@ Template.helpbox.events({
 
 function addStep (n) {
     step+=n;
-    showStep(step);
+    showStep();
 }
 
 function currentStep(n) {
     step=n;
-    showStep(step);
+    showStep();
 }
 
-function showStep(n) {
+function showStep() {
 
     var steps = document.getElementsByClassName("png");
     var dots = document.getElementsByClassName("dot");
     var next = document.getElementsByClassName("next");
 
-    if (n==4) {
+    if (step == steps.length-1) {
         next[0].innerHTML="Close";
     } else {
         next[0].innerHTML="&#10095;"
     }
     
-    if (n > steps.length) {
+    if (step >= steps.length) {
         let helpbox = document.getElementById("helpbox");
         helpbox.classList.add("hidden");
-        step=1;
+        step=0;
     }
 
-    if (n < 1) {step = steps.length}
-    
+    if (step < 0) {
+        step = steps.length-1;
+    }
+    //Updates Picture
     for (let i = 0; i < steps.length; i++) {
-          steps[i].style.display = "none"; 
+        if (i==step) {
+            steps[i].style.display = "block";
+            dots[i].classList.add("active");
+        } else {
+            steps[i].style.display = "none";
+            dots[i].classList.remove("active");
+        }
     }
-    
-    for (let i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-
-    steps[step-1].style.display = "block"; 
-    dots[step-1].classList.add("active");
 }
 
 function checkError(module, listID) {
