@@ -270,7 +270,9 @@ a:visited {
     margin: auto;
     height: auto;
     background-color: #aaa;
-    border-color: #aaa;
+    border-style: solid;
+    border-width: 3px;
+    border-color: tomato;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
@@ -426,4 +428,81 @@ a:visited {
 
 .okMod {
   background: rgba(0,0,0,0);
+}
+
+#aboutbox {
+    position: fixed;
+    display: hide;
+    z-index: 2;
+    background: rgba(0, 0, 0, .8);
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    color: black;
+    font-family: 'Gill Sans', Verdana;
+}
+
+.credits {
+    width: 450px;
+    opacity: 1;
+    z-index: 3;
+    padding: 15px;
+    display: block;
+    margin: 150px auto 50px auto;
+    height: auto;
+    background: white;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    border-style: solid;
+    border-width: 3px;
+    border-color: tomato;
+}
+
+.aboutclose { 
+    font-family: sans-serif;
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.aboutclose:hover, .aboutclose:focus {
+    color: orange;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.abouttitle {
+  float: left;
+  font-size: 22px;
+  color: tomato;
+}
+
+.titlewrapper {
+  display: inline-block;
+  width: 100%;
+}
+
+.web {
+  color: blue;
+}
+
+.web:visited {
+  color: purple;
+
+}
+
+.thanks, .cites {
+  font-size: 14px;
+  font-style: italic
+}
+.cites {
+  display: block;
 }

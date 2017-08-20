@@ -279,6 +279,19 @@ Template.body.events({
         helpbox.classList.add("hidden");
     },
 
+    'click .blogging'(event) {
+        let aboutbox = document.getElementById("aboutbox");
+        aboutbox.classList.remove("hidden");
+
+    },
+
+    'click .aboutclose'(event) {
+        let aboutbox = document.getElementById("aboutbox");
+        aboutbox.classList.add("hidden");
+    },
+
+
+
 });
 
 
